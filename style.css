@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Inter";
-  src: url(./assets/fonts/Inter-VariableFont_slnt_wght.ttf);
+  src: url(./assets/fonts/Inter-VariableFont_slntwght.ttf);
   font-weight: 400 800;
 }
 
@@ -20,6 +20,18 @@
   --fw-regular: 400;
   --fw-bold: 700;
   --fw-extra-bold: 800;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.2rem;
+
+  /* Layout */
+  --footer-img-size: 145px;
+  --menu-width: 70%;
+  --border-radius: 0.25rem;
 }
 
 *,
@@ -48,8 +60,7 @@ hr {
   border-top: 1px solid var(--Off-white);
 }
 
-/* Elements styling */
-
+/* Layout */
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -62,30 +73,20 @@ hr {
     "footer-2"
     "footer-3";
   max-width: 1100px;
-
-  gap: 1rem;
-  margin: 2rem auto;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) auto;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 var(--spacing-sm);
 }
 
-section:nth-of-type(1) {
-  grid-area: main-image;
-}
-
-.main-image > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* Header */
 header {
   grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-block: 1rem;
+  padding-block: var(--spacing-sm);
   width: 100%;
 }
 
@@ -94,42 +95,53 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1rem;
+  padding: var(--spacing-sm);
   color: var(--Very-dark-blue);
   opacity: 0; /* Hidden by default */
 }
 
-nav > .menu {
+nav .menu {
   display: flex;
   flex-direction: column;
   align-items: start;
   position: absolute;
   top: 0;
   right: 0;
-  width: 70%;
+  width: var(--menu-width);
   height: 100vh;
   background-color: var(--Off-white);
-  padding-inline: 2rem;
+  padding-inline: var(--spacing-lg);
   padding-block: 10rem;
   opacity: 0; /* Hidden by default */
 }
 
-.menu > li {
+.menu li {
   list-style-type: none;
 }
 
-li > a {
+.menu a {
   text-decoration: none;
   font-size: 1.2rem;
   line-height: 3rem;
   color: var(--Very-dark-blue);
 }
 
+/* Main content sections */
+.main-image {
+  grid-area: main-image;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .main-title {
   grid-area: main-title;
 }
 
-.main-title > h1 {
+.main-title h1 {
   font-size: 3rem;
   font-weight: var(--fw-extra-bold);
 }
@@ -138,133 +150,132 @@ li > a {
   grid-area: paragraph-button;
 }
 
-.paragraph-button > p {
+.paragraph-button p {
   color: var(--Dark-grayish-blue);
   line-height: 1.6rem;
   letter-spacing: 0.05rem;
 }
 
-.paragraph-button > button {
+.paragraph-button button {
   background-color: var(--Soft-red);
   font-family: inherit;
-  padding-block: 1rem;
+  padding-block: var(--spacing-sm);
   padding-inline: 1.8rem;
   border: none;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: var(--fw-bold);
   letter-spacing: 0.3rem;
 }
 
+/* Article section */
 .article-section {
   grid-area: article-section;
   background-color: var(--Very-dark-blue);
   color: var(--Off-white);
   display: grid;
-  gap: 2rem;
+  gap: var(--spacing-lg);
   padding-inline: 1.2rem;
-  padding-block: 1.5rem;
-  margin-block: 2rem;
+  padding-block: var(--spacing-md);
+  margin-block: var(--spacing-lg);
 }
 
-.article-section > h3 {
+.article-section h2 {
   font-size: 2.3rem;
   color: var(--Soft-orange);
   font-weight: var(--fw-bold);
   letter-spacing: 0.1rem;
 }
 
-.article-section > div > h4 {
+.article-section article h3 {
   font-size: 1.4rem;
   font-weight: var(--fw-bold);
 }
 
-.article-section > div > p {
+.article-section article p {
   color: var(--Grayish-blue);
-  padding-top: 1rem;
+  padding-top: var(--spacing-sm);
   line-height: 1.6rem;
   font-size: 1.1rem;
 }
 
-.footer-img {
-  width: 145px;
-  height: 145px;
-  object-fit: cover;
-  margin-right: 1rem;
-  display: block;
-}
-.footer-1 {
-  grid-area: footer-1;
-}
-
-.footer-2 {
-  grid-area: footer-2;
-}
-
-.footer-3 {
-  grid-area: footer-3;
-}
-
+/* Footer sections - consolidated styles */
 .footer-1,
 .footer-2,
 .footer-3 {
   display: flex;
   align-items: center;
   margin-block: 0.8rem;
-  margin-right: 0.5rem;
+  margin-right: var(--spacing-xs);
+}
+
+.footer-1 {
+  grid-area: footer-1;
+}
+.footer-2 {
+  grid-area: footer-2;
+}
+.footer-3 {
+  grid-area: footer-3;
+}
+
+.footer-img {
+  width: var(--footer-img-size);
+  height: var(--footer-img-size);
+  object-fit: cover;
+  margin-right: var(--spacing-sm);
+  display: block;
 }
 
 .footer-text {
   display: grid;
-  gap: 1rem;
+  gap: var(--spacing-sm);
   padding-left: 0.8rem;
 }
 
-.footer-text > h2 {
+.footer-text .article-number {
   font-size: 2.3rem;
   color: var(--Soft-red);
+  font-weight: var(--fw-bold);
 }
 
-.footer-text > h3 {
+.footer-text h3 {
   color: var(--Very-dark-blue);
   font-size: 1.1rem;
   font-weight: var(--fw-extra-bold);
 }
 
-.footer-text > p {
+.footer-text p {
   color: var(--Dark-grayish-blue);
   font-size: 1rem;
 }
 
-/* Active states */
-
-li > a:hover {
+/* Interactive states */
+.menu a:hover {
   color: var(--Soft-red);
 }
 
-.footer-text > h3:hover {
+.footer-text h3:hover {
   color: var(--Soft-red);
   cursor: pointer;
 }
 
-.paragraph-button > button:hover {
+.paragraph-button button:hover {
   background-color: var(--Very-dark-blue);
   color: var(--Off-white);
   cursor: pointer;
 }
 
-.article-section > div > h4:hover {
+.article-section article h3:hover {
   color: var(--Soft-orange);
   cursor: pointer;
 }
 
 /* Media queries for large screens */
-
 @media (min-width: 768px) {
   .grid-container {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       "header header header"
@@ -272,29 +283,29 @@ li > a:hover {
       "main-title paragraph-button article-section"
       "footer-1 footer-2 footer-3";
     grid-template-rows: auto;
-    gap: 2.2rem;
+    gap: var(--spacing-xl);
   }
 
   .article-section {
     margin-block: 0;
   }
 
-  .article-section > div > p {
+  .article-section article p {
     font-size: 1rem;
   }
 
-  .main-title > h1 {
+  .main-title h1 {
     font-size: 3.5rem;
     line-height: 3.7rem;
   }
 
-  .paragraph-button > p {
+  .paragraph-button p {
     letter-spacing: 0;
     padding-right: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-sm);
   }
 
-  .paragraph-button > button {
+  .paragraph-button button {
     margin-bottom: auto;
   }
 
@@ -306,8 +317,7 @@ li > a:hover {
     display: none;
   }
 
-  nav > .menu {
-    display: flex;
+  nav .menu {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -319,12 +329,11 @@ li > a:hover {
     opacity: 1;
   }
 
-  ul > li {
+  .menu li {
     list-style-type: none;
   }
 
-  li > a {
-    text-decoration: none;
+  .menu a {
     color: var(--Dark-grayish-blue);
   }
 }

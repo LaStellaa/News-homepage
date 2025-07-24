@@ -5,12 +5,10 @@ const menuIcon = document.querySelector(".menu-icon");
 const menuCloseIcon = document.querySelector(".menu-close-icon");
 
 // Function to check if the screen size is mobile
-function isMobileScreen() {
-  return window.matchMedia("(max-width: 767px)").matches;
-}
+const isMobileScreen = () => window.matchMedia("(max-width: 767px)").matches;
 
 // Function to show the menu
-function showMenu() {
+const showMenu = () => {
   if (isMobileScreen()) {
     menu.style.visibility = "visible"; // Make the menu visible
     menu.style.opacity = "1"; // Fully opaque
@@ -18,10 +16,10 @@ function showMenu() {
     menuCloseIcon.style.opacity = "1";
     menuIcon.style.display = "none"; // Hide the menu icon
   }
-}
+};
 
 // Function to hide the menu
-function hideMenu() {
+const hideMenu = () => {
   if (isMobileScreen()) {
     menu.style.visibility = "hidden"; // Hide the menu
     menu.style.opacity = "0"; // Fully transparent
@@ -29,17 +27,19 @@ function hideMenu() {
     menuCloseIcon.style.opacity = "0";
     menuIcon.style.display = "block"; // Show the menu icon
   }
-}
+};
 
-//Ensure menu resets correctly on resize
-function resetMenuOnResize() {
+// Ensure menu resets correctly on resize
+const resetMenuOnResize = () => {
   if (!isMobileScreen()) {
+    // Reset all inline styles to let CSS take over
     menu.style.visibility = "";
     menu.style.opacity = "";
     menuCloseIcon.style.display = "";
+    menuCloseIcon.style.opacity = "";
     menuIcon.style.display = "";
   }
-}
+};
 
 // Event listeners
 menuIcon.addEventListener("click", showMenu);
